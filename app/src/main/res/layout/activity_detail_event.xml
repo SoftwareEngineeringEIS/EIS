@@ -55,9 +55,16 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Delete Image"
+            android:text="Delete Event"
             android:id="@+id/detailDeleteButton"
             android:onClick="deleteButtonClicked"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Event"
+            android:id="@+id/editEventButton"
+            android:onClick="editButtonClicked"
             />
 
     </LinearLayout>

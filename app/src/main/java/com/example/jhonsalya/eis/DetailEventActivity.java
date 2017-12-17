@@ -29,6 +29,7 @@ public class DetailEventActivity extends AppCompatActivity {
     private TextView detailPostLocation;
     private TextView detailPostDescription;
     private Button deleteButton;
+    private Button editButton;
 
     private FirebaseAuth mAuth;
 
@@ -52,6 +53,9 @@ public class DetailEventActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         deleteButton = (Button) findViewById(R.id.detailDeleteButton);
         deleteButton.setVisibility(View.INVISIBLE);
+
+        editButton = (Button) findViewById(R.id.editEventButton);
+        editButton.setVisibility(View.INVISIBLE);
 
         mDatabase.child(post_key).addValueEventListener(new ValueEventListener() {
             @Override
@@ -78,6 +82,7 @@ public class DetailEventActivity extends AppCompatActivity {
                 //show delete button if the user authenticated
                 if(mAuth.getCurrentUser().getUid().equals(post_uid)){
                     deleteButton.setVisibility(View.VISIBLE);
+                    editButton.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -91,5 +96,10 @@ public class DetailEventActivity extends AppCompatActivity {
         mDatabase.child(post_key).removeValue();
         Intent mainIntent = new Intent(DetailEventActivity.this,MainActivity.class);
         startActivity(mainIntent);
+    }
+    public void editButtonClicked(View view){
+        Intent eventEditActivity = new Intent(DetailEventActivity.this, EditEventActivity.class);
+        eventEditActivity.putExtra("PostId", post_key);
+        startActivity(eventEditActivity);
     }
 }
