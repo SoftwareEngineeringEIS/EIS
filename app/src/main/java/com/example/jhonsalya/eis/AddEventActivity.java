@@ -164,7 +164,8 @@ public class AddEventActivity extends AppCompatActivity{
                             newPost.child("start_date").setValue(startDateValue);
                             newPost.child("finish_date").setValue(finishDateValue);
                             newPost.child("category").setValue(categoryValue);
-                            newPost.child("description").setValue(descValue).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            newPost.child("description").setValue(descValue);
+                            newPost.child("uid").setValue(mCurrentUser.getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
