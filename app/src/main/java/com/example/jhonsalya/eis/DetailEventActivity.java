@@ -1,5 +1,6 @@
 package com.example.jhonsalya.eis;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +12,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class DetailEventActivity extends AppCompatActivity {
 
@@ -33,6 +36,9 @@ public class DetailEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_event);
+
+        post_key = getIntent().getExtras().getString("PostId");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("EventApp");
 
         detailPostImage = (ImageView) findViewById(R.id.detailImageView);
         detailPostTitle = (TextView) findViewById(R.id.detailTitle);
@@ -57,8 +63,22 @@ public class DetailEventActivity extends AppCompatActivity {
                 String post_finish_date = (String) dataSnapshot.child("finish_date").getValue();
                 String post_participant = (String) dataSnapshot.child("participant").getValue();
                 String post_location = (String) dataSnapshot.child("location").getValue();
-                String post_description = (String) dataSnapshot.child("description").getValue();
+                String post_description = (String) dataSnapshot.child("desc").getValue();
                 String post_uid = (String) dataSnapshot.child("uid").getValue();
+
+                Picasso.with(DetailEventActivity.this).load(post_image).into(detailPostImage);
+                detailPostTitle.setText(post_title);
+                detailPostCategory.setText(post_category);
+                detailPostStartDate.setText(post_start_date);
+                detailPostFinishDate.setText(post_finish_date);
+                detailPostParticipant.setText(post_participant);
+                detailPostLocation.setText(post_location);
+                detailPostDescription.setText(post_description);
+
+                //show delete button if the user authenticated
+                if(mAuth.getCurrentUser().getUid().equals(post_uid)){
+                    deleteButton.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -66,5 +86,10 @@ public class DetailEventActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public void deleteButtonClicked(View view){
+        mDatabase.child(post_key).removeValue();
+        Intent mainIntent = new Intent(DetailEventActivity.this,MainActivity.class);
+        startActivity(mainIntent);
     }
 }
