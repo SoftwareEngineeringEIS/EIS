@@ -36,7 +36,10 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-database:0.4.4'
 
     compile 'com.github.sillebille:dynamic-calendar:1.0.1'
+    compile 'com.miguelcatalan:materialsearchview:1.4.0'
 }
+
+
 
 
 

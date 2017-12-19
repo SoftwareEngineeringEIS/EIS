@@ -20,10 +20,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.jhonsalya.eis.Model.Category;
+import com.example.jhonsalya.eis.ViewHolder.EventViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity implements
@@ -40,10 +43,13 @@ public class MainActivity extends AppCompatActivity implements
 
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+    MaterialSearchView searchView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -87,8 +93,8 @@ public class MainActivity extends AppCompatActivity implements
                 viewHolder.setDesc(model.getDesc());
                 viewHolder.setImage(getApplicationContext(),model.getImage());
 
-                //Detail Event belum selesai
-                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                //Detail Event
+                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent eventDetailActivity = new Intent(MainActivity.this, DetailEventActivity.class);
@@ -108,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements
         return true;
     }
 
-    public static class EventViewHolder extends RecyclerView.ViewHolder{
+    /*public static class EventViewHolder extends RecyclerView.ViewHolder{
 
         View mView;
         public EventViewHolder(View itemView){
@@ -130,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements
             ImageView post_image = (ImageView) mView.findViewById(R.id.eventPost);
             Picasso.with(ctx).load(image).into(post_image);
         }
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -140,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_search) {
             return true;
         }
         else if(mToggle.onOptionsItemSelected(item)){
@@ -164,7 +170,8 @@ public class MainActivity extends AppCompatActivity implements
             startActivity(intent);
         }
         else if(id == R.id.nav_category){
-
+            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+            startActivity(intent);
         }
         else if(id == R.id.nav_sort){
 
