@@ -14,44 +14,115 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:id="@+id/detailImageView"
+            android:layout_marginBottom="10dp"
             />
-        <TextView
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/detailTitle"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/detailCategory"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/detailStartDate"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/detailFinishDate"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/detailParticipant"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/detailLocation"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/detailDescription"
-            />
+            android:layout_height="match_parent"
+            android:stretchColumns="1">
+
+            <TableRow>
+                <TextView
+                    android:text="Event Name"
+                    android:padding="10dip"
+                    android:layout_width="120dp"
+                    android:background="@android:color/darker_gray"
+                    />
+                <TextView
+                    android:gravity="left"
+                    android:padding="10dip"
+                    android:id="@+id/detailTitle"
+                    />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="Event Category"
+                    android:padding="10dip"
+                    android:layout_width="120dp"
+                    android:background="@android:color/darker_gray"
+                    />
+                <TextView
+                    android:gravity="left"
+                    android:padding="10dip"
+                    android:id="@+id/detailCategory"
+                    />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="Start Date"
+                    android:padding="10dip"
+                    android:layout_width="120dp"
+                    android:background="@android:color/darker_gray"
+                    />
+                <TextView
+                    android:gravity="left"
+                    android:padding="10dip"
+                    android:id="@+id/detailStartDate"
+                    />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="Finish Date"
+                    android:padding="10dip"
+                    android:layout_width="120dp"
+                    android:background="@android:color/darker_gray"
+                    />
+                <TextView
+                    android:gravity="left"
+                    android:padding="10dip"
+                    android:id="@+id/detailFinishDate"
+                    />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="Number of Participant"
+                    android:padding="10dip"
+                    android:layout_width="120dp"
+                    android:background="@android:color/darker_gray"
+                    />
+                <TextView
+                    android:gravity="left"
+                    android:padding="10dip"
+                    android:id="@+id/detailParticipant"
+                    />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="Location"
+                    android:padding="10dip"
+                    android:layout_width="120dp"
+                    android:background="@android:color/darker_gray"
+                    />
+                <TextView
+                    android:gravity="left"
+                    android:padding="10dip"
+                    android:id="@+id/detailLocation"
+                    />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="Description"
+                    android:padding="10dip"
+                    android:layout_width="120dp"
+                    android:background="@android:color/darker_gray"
+                    />
+                <TextView
+                    android:gravity="left"
+                    android:padding="10dip"
+                    android:id="@+id/detailDescription"
+                    />
+            </TableRow>
+        </TableLayout>
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
