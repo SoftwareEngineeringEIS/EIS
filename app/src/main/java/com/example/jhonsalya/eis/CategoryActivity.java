@@ -51,6 +51,7 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             protected void populateViewHolder(CategoryViewHolder viewHolder, Category model, int position) {
                 viewHolder.txtCategoryName.setText(model.getName());
+                final String post_key = model.getName();
                 final Category clickItem = model;
 
                 viewHolder.setItemClickListener(new ItemClickListener() {
@@ -59,7 +60,8 @@ public class CategoryActivity extends AppCompatActivity {
                         //get categoryID and send to new activity
                         Intent eventList = new Intent(CategoryActivity.this, EventByCategoryActivity.class);
                         //because categoryID is key, so we just get key of this item
-                        eventList.putExtra("CategoryId", adapter.getRef(position).getKey());
+                        //eventList.putExtra("CategoryId", adapter.getRef(position).getKey());
+                        eventList.putExtra("CategoryId", post_key);
                         startActivity(eventList);
                     }
                 });
