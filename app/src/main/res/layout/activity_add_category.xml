@@ -8,12 +8,14 @@
     tools:context="com.example.jhonsalya.eis.AddCategoryActivity">
 
     <EditText
+        android:id="@+id/editCategoryName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="New Category"
         />
 
     <Button
+        android:onClick="addCategoryButtonClicked"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
