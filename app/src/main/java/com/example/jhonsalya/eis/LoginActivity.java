@@ -1,5 +1,6 @@
 package com.example.jhonsalya.eis;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +42,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginButtonClicked(View view){
+        final ProgressDialog mDialog = new ProgressDialog(LoginActivity.this);
+        mDialog.setMessage("Please Wait.....");
+        mDialog.show();
+
         String email = loginEmail.getText().toString().trim();
         String pass = loginPass.getText().toString().trim();
 
@@ -52,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                         //Intent loginIntent = new Intent(LoginActivity.this, MainActivity.class);
                         //startActivity(loginIntent);
                         checkUserExists();
+                        mDialog.dismiss();
                     }
                     else{
                         try {

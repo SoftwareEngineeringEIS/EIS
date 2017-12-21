@@ -1,6 +1,7 @@
 package com.example.jhonsalya.eis;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -166,6 +167,10 @@ public class EditEventActivity extends AppCompatActivity {
         }
     }
     public void submitButtonClicked(View view){
+        final ProgressDialog mDialog = new ProgressDialog(EditEventActivity.this);
+        mDialog.setMessage("Please Wait.....");
+        mDialog.show();
+
         final String titleValue = editName.getText().toString().trim();
         final String descValue = editDesc.getText().toString().trim();
         final String locationValue = editLocation.getText().toString().trim();
@@ -200,6 +205,7 @@ public class EditEventActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
+                                        mDialog.dismiss();
                                         Intent eventDetailActivity = new Intent(EditEventActivity.this, DetailEventActivity.class);
                                         eventDetailActivity.putExtra("PostId", post_key);
                                         startActivity(eventDetailActivity);

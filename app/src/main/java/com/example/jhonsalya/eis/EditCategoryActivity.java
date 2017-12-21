@@ -1,5 +1,6 @@
 package com.example.jhonsalya.eis;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -65,6 +66,10 @@ public class EditCategoryActivity extends AppCompatActivity {
     }
 
     public void editCategoryButtonClicked(View view){
+        final ProgressDialog mDialog = new ProgressDialog(EditCategoryActivity.this);
+        mDialog.setMessage("Please Wait.....");
+        mDialog.show();
+
         final String nameValue = editName.getText().toString().trim();
 
         if(!TextUtils.isEmpty(nameValue)){
@@ -77,6 +82,7 @@ public class EditCategoryActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
+                                mDialog.dismiss();
                                 Toast.makeText(EditCategoryActivity.this, "Upload Complete", Toast.LENGTH_LONG).show();
                                 Intent mainActivityIntent = new Intent(EditCategoryActivity.this, CategoryActivity.class);
                                 startActivity(mainActivityIntent);
