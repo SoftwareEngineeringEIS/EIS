@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
+import com.example.jhonsalya.eis.Common.Common;
 import com.example.jhonsalya.eis.Interface.ItemClickListener;
 import com.example.jhonsalya.eis.Model.Category;
 import com.example.jhonsalya.eis.ViewHolder.CategoryViewHolder;
@@ -70,5 +72,19 @@ public class CategoryActivity extends AppCompatActivity {
         Log.d("TAG","" + adapter.getItemCount());
         recycler_event.setAdapter(adapter);
 
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if(item.getTitle().equals(Common.UPDATE)){
+            Intent mainActivityIntent = new Intent(CategoryActivity.this, EditCategoryActivity.class);
+            mainActivityIntent.putExtra("PostId",adapter.getRef(item.getOrder()).getKey().toString());
+            startActivity(mainActivityIntent);
+        }
+        if(item.getTitle().equals(Common.DELETE)){
+            category.child(adapter.getRef(item.getOrder()).getKey().toString()).removeValue();
+        }
+
+        return super.onContextItemSelected(item);
     }
 }

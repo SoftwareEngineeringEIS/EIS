@@ -152,16 +152,16 @@ public class SidebarAdapter extends BaseExpandableListAdapter {
 
         //icon for child (sort alphabetically
         if(groupPosition == 2 && childPosition == 0){
-            holder.childIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_person_black_24dp));
+            holder.childIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_sort_by_alpha_black_24dp));
         }//sort by time
         if(groupPosition == 2 && childPosition == 1){
-            holder.childIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_person_black_24dp));
+            holder.childIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_access_time_black_24dp));
         }//add event
         if(groupPosition == 3 && childPosition == 0){
-            holder.childIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_person_black_24dp));
+            holder.childIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_add_circle_outline_black_24dp));
         }//add category
         if(groupPosition == 3 && childPosition == 1){
-            holder.childIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_person_black_24dp));
+            holder.childIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_add_circle_outline_black_24dp));
         }
 
         return convertView;

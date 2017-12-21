@@ -28,7 +28,8 @@
         <activity android:name=".DetailEventActivity" />
         <activity android:name=".EditEventActivity" />
         <activity android:name=".CategoryActivity" />
-        <activity android:name=".EventByCategoryActivity"></activity>
+        <activity android:name=".EventByCategoryActivity" />
+        <activity android:name=".EditCategoryActivity"></activity>
     </application>
 
 </manifest>

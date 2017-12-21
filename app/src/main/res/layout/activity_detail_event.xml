@@ -123,20 +123,33 @@
             </TableRow>
         </TableLayout>
 
-        <Button
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:weightSum="2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete Event"
-            android:id="@+id/detailDeleteButton"
-            android:onClick="deleteButtonClicked"
-            />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Edit Event"
-            android:id="@+id/editEventButton"
-            android:onClick="editButtonClicked"
-            />
+            android:layout_height="wrap_content">
 
+            <Button
+                android:text="Delete Event"
+                android:id="@+id/detailDeleteButton"
+                android:onClick="deleteButtonClicked"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                />
+
+            <Button
+                android:text="Edit Event"
+                android:id="@+id/editEventButton"
+                android:onClick="editButtonClicked"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                />
+
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

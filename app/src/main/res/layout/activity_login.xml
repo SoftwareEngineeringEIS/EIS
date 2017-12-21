@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/loginEmail"
         android:hint="Enter Email"
+        android:text="admin@gmail.com"
         />
 
     <EditText
@@ -20,6 +21,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/loginPass"
         android:hint="Enter Password"
+        android:password="true"
+        android:text="admin123"
         />
 
     <Button

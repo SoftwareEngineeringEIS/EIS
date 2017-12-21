@@ -42,7 +42,7 @@ public class AddCategoryActivity extends AppCompatActivity {
         editName = (EditText) findViewById(R.id.editCategoryName);
 
         storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference = database.getInstance().getReference().child("EventApp");
+        databaseReference = database.getInstance().getReference().child("Category");
 
         mAuth = FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
@@ -63,7 +63,7 @@ public class AddCategoryActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(AddCategoryActivity.this, "Upload Complete", Toast.LENGTH_LONG).show();
-                                Intent mainActivityIntent = new Intent(AddCategoryActivity.this, Category.class);
+                                Intent mainActivityIntent = new Intent(AddCategoryActivity.this, MainActivity.class);
                                 startActivity(mainActivityIntent);
                             }
                         }
